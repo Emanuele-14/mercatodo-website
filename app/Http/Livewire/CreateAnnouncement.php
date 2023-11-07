@@ -75,7 +75,22 @@ class CreateAnnouncement extends Component
         $this->announcement->save();
         
         session()->flash('message', trans('ui.annuncioApprovazione'));
+        $this->cleanForm();
         }
+    }
+
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
+    }
+    public function cleanForm()
+    {
+        $this->title = '';
+        $this->body = '';
+        $this->price = '';
+        $this->category = '';
+        $this->temporary_images = [];
+        $this->images = [];
     }
     public function render()
     {
