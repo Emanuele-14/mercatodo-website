@@ -48,4 +48,8 @@ class Announcement extends Model
         $this->save();
         return true;
     }
+
+    public static function toBeRevisionedCount(){
+        return Announcement::where('is_accepted',null)->count();
+    }
 }

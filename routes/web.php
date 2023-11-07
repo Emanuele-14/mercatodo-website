@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RevisorController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\FrontController;
@@ -34,3 +35,9 @@ Route::get('/annunci', [AnnouncementController::class, 'index'])->name('announce
 //ROUTE SEARCH ANNOUNCEMENTS
 
 Route::get('/ricerca/annuncio', [FrontController::class, 'searchAnnouncements'])->name('announcements.search');
+
+//ROUTE REVISOR
+
+Route::get('/richiesta/revisore', [RevisorController::class, 'becomeRevisor'])->middleware('auth')->name('become.revisor');
+Route::get('/rendi/revisore/{user}', [RevisorController::class, 'makeRevisor'])->middleware('auth')->name('make.revisor');
+Route::get('/revisor/home',[RevisorController::class, 'index'])->middleware('isRevisor')->name('revisor.index');
