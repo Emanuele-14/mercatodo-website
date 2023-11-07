@@ -18,4 +18,23 @@ class AnnouncementController extends Controller
     {
         return view('announcements.create');
     }
+
+    public function showAnnouncement(Announcement $announcement)
+    {    
+        $relatedAnnouncements = Announcement::where('category_id', $announcement->category_id)
+        ->where('id', '!=', $announcement->id)
+        ->where('is_accepted', true)
+        ->latest()
+        ->take(4)
+        ->get();
+       
+        $otherAnnouncements = Announcement::where('is_accepted', true)
+        ->where('id', '!=', $announcement->id)
+        ->latest()
+        ->take(4)
+        ->get();
+        return view('announcements.detail', compact('announcement'));
+    }
+
 }
+
