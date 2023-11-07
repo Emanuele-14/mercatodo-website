@@ -28,4 +28,17 @@ class FrontController extends Controller
         $announcements = Announcement::search($request->searched)->where('is_accepted', true)->orderBy('updated_at', 'desc')->paginate(4);
         return view('announcements.index', compact('announcements'));
     }
+
+    public function checkEmail(Request $request)
+    {
+        $email = $request->input('email');
+    
+        $user = User::where('email', $email)->first();
+    
+        if ($user) {
+            return response()->json(['isRegistered' => true]);
+        }
+    
+        return response()->json(['isRegistered' => false]);
+    }
 }
