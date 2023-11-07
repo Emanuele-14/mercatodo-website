@@ -31,12 +31,12 @@ class RevisorController extends Controller
     }
 
     public function becomeRevisor(){
-        Mail::to('admin@tap&go.com')->send(new BecomeRevisor(Auth::user()));
+        Mail::to('admin@mercatodo.com')->send(new BecomeRevisor(Auth::user()));
         return redirect()->back()->with('message',trans('ui.richiestaRev'));
     }
 
     public function makeRevisor(User $user){
-        Artisan::call('tapEgo:makeUserRevisor',["email"=>$user->email]);
+        Artisan::call('mercatodo:makeUserRevisor',["email"=>$user->email]);
         return redirect('/')->with('message',trans('ui.utentediventstoRev'));
     }
 

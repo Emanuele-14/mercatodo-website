@@ -76,6 +76,7 @@ class CreateAnnouncement extends Component
         
         session()->flash('message', trans('ui.annuncioApprovazione'));
         }
+    }
     public function render()
     {
         return view('livewire.create-announcement');
