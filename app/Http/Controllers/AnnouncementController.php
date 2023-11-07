@@ -33,7 +33,7 @@ class AnnouncementController extends Controller
         ->latest()
         ->take(4)
         ->get();
-        return view('announcements.detail', compact('announcement'));
+        return view('announcements.detail', compact('announcement', 'relatedAnnouncements', 'otherAnnouncements'));
     }
 
 }

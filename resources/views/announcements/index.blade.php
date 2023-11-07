@@ -1,11 +1,15 @@
 <x-layout>
     <x-navbar />
-    @if (session()->has('message'))
-        <div class="alert alert-success">
-            {{ session('message') }}
+    <header class="bg-header pt-5 pb-3">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="text-center ">
+                <h3 class="fw-bold text-black mb-0">{{ __('ui.Iltuo') }} <span class="fw-light">
+                        {{ __('ui.tiBasta') }}</span>
+                </h3>
+            </div>
         </div>
-    @endif
-    <x-header />
+    </header>
+    <!--search section-->
     <div class="container">
         <div class="row">
             <div class="col-sm-8 offset-sm-2 text-center mb-5">
@@ -17,25 +21,18 @@
                             <input name="searched" class="form-control me-2 border border-0 ps-1 input-focus"
                                 type="search" placeholder="{{ __('ui.cercaIn') }}" aria-label="Search">
                         </div>
-                        <button id="btn" class="btn bu-orange fw-light rounded-pill px-3 mx-2"
+                        <button class="btn bu-orange fw-light rounded-pill px-3 mx-2"
                             type="submit">{{ __('ui.cerca') }}</button>
                     </form>
                 </div>
             </div>
         </div>
-       
+        <!--card section-->
+
         <section class="pb-1">
             <div class="container px-5 my-5">
-                <div class="row gx-5 justify-content-center mb-5">
-                    <div class="col-lg-8 col-xl-6">
-                        <div class="text-center">
-                            <h2 class="fw-bolder text-black ">{{ __('ui.ultimiAnnunci') }}</h2>
-                        </div>
-                        <hr class="mb-0">
-                    </div>
-                </div>
                 <div class="row gx-5">
-                    @foreach ($announcements as $announcement)
+                    @forelse ($announcements as $announcement)
                         <div data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="300"
                             data-aos-offset="0" class="col-lg-3 mb-5">
                             <div class="card card-custom h-100 border-0">
@@ -60,11 +57,12 @@
                                                 <p class="card-text mb-0">{{ __('ui.prezzo') }}: €
                                                     {{ $announcement->price }}</p>
                                                 <div>{{ __('ui.inserzionista') }}
-                                                    <span>{{ $announcement->user->name }}</span></div>
+                                                    <span>{{ $announcement->user->name }}</span>
+                                                </div>
                                                 <div class="text-muted">{{ __('ui.annuncioCreatoIl') }}
                                                     {{ $announcement->updated_at->format('d/m/y') }} <br> </div>
                                                 <div class="pt-2">
-                                        
+
                                                 </div>
                                             </div>
 
@@ -74,41 +72,27 @@
 
                             </div>
 
-                        </div> 
-                    @endforeach
-                </div>
-                <div class="container d-flex justify-content-center">
-                    <a class="btn bg-custom py-2 px-4 text-white rounded-pill"
-                        href="{{ route('announcements.index') }}">
-                        {{ __('ui.tuttiAnnunci') }}
-                    </a>
-                </div>
-            </div>
-        </section>
-        
-        <section class="pt-2">
-            <div class="container px-lg-5" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="300"
-                data-aos-offset="0">
-                <div class="container-fluid py-5">
-                    <div class="container">
-                        <div class="row g-5 align-items-center">
-                            <div class="col-lg-6">
-                                <img class="img-fluid" src="images/payments.png">
-                            </div>
-                            <div class="col-lg-6 ">
-                                <h1 class="mb-4 text-black fw-bold">{{ __('ui.manteniamo') }}<span
-                                        class="fw-light text-dark">{{ __('ui.affari') }}</span></h1>
-                                <p class="mb-4">{{ __('ui.homeMessage') }}
-                                </p>
-                                <p class="mb-4">{{ __('ui.homeMessage2') }}
-                                </p>
-                            </div>
+                        </div> <!--endcard-->
+                    @empty
+                        <div class="d-flex justify-content-center align-items-center flex-column mb-5 pb-5">
+                            <i class=" mb-3 fa-regular fa-face-frown fa-2xl"></i>
+                            <h1>{{ __('ui.ops') }}</h1>
+                            <a class="mt-2" href="{{ route('announcements.create') }}">
+                                <h6>{{ __('ui.inserisciPerPrimo') }}</h6>
+                            </a>
+                            <span>{{ __('ui.oppure') }} <a class="text-decoration-underline"
+                                    href="{{ route('homepage') }}">{{ __('ui.tornaAnnunci') }}</a></span>
                         </div>
+                    @endforelse
+                    <div data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="300" data-aos-offset="0"
+                        class="paginate">{{ $announcements->links() }}</div>
+
+                    <div data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="300" data-aos-offset="0"
+                        class="d-flex justify-content-center mt-5">
+                        <a class="mx-1" href="{{ route('homepage') }}">{{ __('ui.tornaHome') }}</a>
                     </div>
                 </div>
             </div>
-    </div>
-    </section>
-    </div>
-    <x-footer />
+        </section>
+        <x-footer />
 </x-layout>
