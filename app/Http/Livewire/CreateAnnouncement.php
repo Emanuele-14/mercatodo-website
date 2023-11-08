@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire;
 
+use App\Jobs\AddWatermark;
+use App\Jobs\GoogleVisionSafeSearch;
 use Livewire\Component;
 use App\Models\Category;
 use App\Jobs\ResizeImage;
@@ -9,6 +11,7 @@ use App\Models\Announcement;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use App\Jobs\RemoveFaces;
 
 class CreateAnnouncement extends Component
 {   
@@ -69,13 +72,31 @@ class CreateAnnouncement extends Component
             {
                 $newFileName = "announcements/{$this->announcement->id}";
                 $newImage = $this->announcement->images()->create(['path' => $image->store($newFileName, 'public')]);
+            
+
+                RemoveFaces::withChain([
+                    new GoogleVisionSafeSearch($newImage->id),
+                    new ResizeImage($newImage->path, 800, 600),
+                    new AddWatermark($newImage->id),
+                ])->dispatch($newImage->id);
             }
-        
+
+            File::deleteDirectory(storage_path('/app/livewire-tmp'));
+        }
+
         $this->announcement->user()->associate(Auth::user());
         $this->announcement->save();
         
         session()->flash('message', trans('ui.annuncioApprovazione'));
         $this->cleanForm();
+        
+    }
+
+    public function removeImage($key)
+    {
+        if (in_array($key, array_keys($this->images))) 
+        {
+            unset($this->images[$key]);
         }
     }
 
