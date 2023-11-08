@@ -41,4 +41,10 @@ class FrontController extends Controller
     
         return response()->json(['isRegistered' => false]);
     }
+
+    public function setLanguage($lang)
+    {
+        session()->put('locale',$lang);
+        return redirect()->back();
+    }
 }

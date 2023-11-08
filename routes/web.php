@@ -27,7 +27,6 @@ Route::get('/categorie/{category}', [FrontController::class,'categoryShow'])->na
 
 //ROUTE ANNOUNCEMENTS
 
-
 Route::get('/nuovo/annuncio', [AnnouncementController::class, 'createAnnouncement'])->middleware('auth')->name('announcements.create');
 Route::get('/annunci/{announcement}', [AnnouncementController::class, 'showAnnouncement', ])->name('announcements.show');
 Route::get('/annunci', [AnnouncementController::class, 'index'])->name('announcements.index');
@@ -41,3 +40,12 @@ Route::get('/ricerca/annuncio', [FrontController::class, 'searchAnnouncements'])
 Route::get('/richiesta/revisore', [RevisorController::class, 'becomeRevisor'])->middleware('auth')->name('become.revisor');
 Route::get('/rendi/revisore/{user}', [RevisorController::class, 'makeRevisor'])->middleware('auth')->name('make.revisor');
 Route::get('/revisor/home',[RevisorController::class, 'index'])->middleware('isRevisor')->name('revisor.index');
+
+//ROUTE ACCEPT-REJECT ANNOUNCEMENTS
+
+Route::patch('/accetta/annuncio/{announcement}', [RevisorController::class, 'acceptAnnouncement'])->middleware('isRevisor')->name('revisor.accept_announcement');
+Route::patch('/rifiuta/annuncio/{announcement}', [RevisorController::class, 'rejectAnnouncement'])->middleware('isRevisor')->name('revisor.reject_announcement');
+
+//ROUTE LENGUAGES
+
+Route::post('/lingua/{lang}', [FrontController::class, 'setLanguage'])->name('set_language_locale');
