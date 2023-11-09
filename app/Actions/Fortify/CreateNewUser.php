@@ -28,6 +28,19 @@ class CreateNewUser implements CreatesNewUsers
                 'max:255',
                 Rule::unique(User::class),
             ],
+
+            'telephone' => 
+            [
+                'nullable',
+                'numeric',
+                function($attribute, $value, $fail) 
+                {
+                    if (strlen($value) > 13) 
+                    {
+                        $fail(trans('ui.validaNumeroTelefono'));
+                    }
+                },
+            ],
             'password' => $this->passwordRules(),
         ])->validate();
 
@@ -35,6 +48,7 @@ class CreateNewUser implements CreatesNewUsers
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
+            'telephone' => $input['telephone'],
         ]);
     }
 }

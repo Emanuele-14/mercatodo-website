@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Mail\BecomeRevisor;
-use Illuminate\Http\Request;
 use App\Models\Announcement;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
