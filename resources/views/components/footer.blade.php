@@ -14,7 +14,7 @@
             <div style="display: flex;flex-direction: column;align-items: center;" class="col-md-6 col-lg-4">
                 <h5 class="mb-4 fw-bold text-black">{{__('ui.comeContattarci')}}</h5>
                 <p><i class="color-custom fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                <p><i class=" color-custom fa fa-envelope me-3"></i>mercatodo@example.com</p>
+                <p><i class=" color-custom fa fa-envelope me-3"></i>Mercatodo@example.com</p>
 
 
                 <div class="d-flex pt-2">
@@ -41,7 +41,6 @@
 
 
             </div>
-          
         </div>
     </div>
     <div class="container-fluid d-flex justify-content-center bg-light py-3">
@@ -54,7 +53,7 @@
                 @endif
            
                 <div class="col-12 text-center text-md-center mb-3 mb-md-0">
-                    &copy; <a class="border-bottom" href="{{ route('homepage') }}">Mercatodo </a> - {{__('ui.reserved')}}
+                    &copy; <a class="border-bottom" href="{{ route('homepage') }}">Tap&Go </a> - {{__('ui.reserved')}}
                 </div>
 
             </div>
