@@ -49,3 +49,7 @@ Route::patch('/rifiuta/annuncio/{announcement}', [RevisorController::class, 'rej
 //ROUTE LENGUAGES
 
 Route::post('/lingua/{lang}', [FrontController::class, 'setLanguage'])->name('set_language_locale');
+
+//ROUTE EMAIL
+
+Route::post('/check-email', [FrontController::class, 'checkEmail'])->name('check-email');

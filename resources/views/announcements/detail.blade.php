@@ -126,9 +126,6 @@
                                                         {{ $relatedAnnouncement->created_at->format('d/m/y') }}</span>
                                                 </div>
                                                 <div class="pt-2">
-                                                    {{-- <a href="{{ route('announcements.show', $announcement) }}">
-                                                        <p>{{ __('ui.dettagli') }}</p>
-                                                    </a> --}}
                                                 </div>
                                             </div>
 

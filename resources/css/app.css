@@ -47,20 +47,20 @@ a:hover {
 }
 
 .dropdown-item:active {
-  background-color: #F3722C !important;
+  background-color: #5991FF !important;
 }
 
 .dropdown-item:hover {
-  background-color: #F3722C !important;
+  background-color: #5991FF !important;
   color: white !important;
 }
 
 .bu-orange {
-  background-color: #F3722C !important;
+  background-color: #5991FF !important;
   color: #fefefd;
 
   &:hover {
-    background-color: #F9844A !important;
+    background-color: #5CC6FF !important;
     color: #fefefd;
   }
 
@@ -68,30 +68,30 @@ a:hover {
 
 
 .bg-custom {
-  background-color: #F3722C;
+  background-color: #5991FF;
   font-weight: inherit;
   &:hover{
-    background-color: #F9844A !important;
+    background-color: #5CC6FF !important;
   color: #fefefd;
   }
 
 }
 
 .bg-custom-2{
-  background-color: #F3722C;
+  background-color: #5991FF;
 }
 
 .color-custom {
-  color: #F3722C !important;
+  color: #5991FF !important;
 }
 
 .btn-social {
-  border-color: #F3722C;
-  color: #F9844A;
+  border-color: #5991FF;
+  color: #5CC6FF;
 }
 
 .btn-social:hover {
-  background-color: #F9844A !important;
+  background-color: #5CC6FF !important;
   color: #fefefd;
 }
 
@@ -129,7 +129,7 @@ a:hover {
 }
 
 .c-arrow {
-  color: #F3722C !important;
+  color: #5991FF !important;
 }
 
 
@@ -150,13 +150,13 @@ a:hover {
 
 .logout {
   background-color: transparent;
-  border: 1px #F3722C;
+  border: 1px #5991FF;
   border-style: dotted;
-  color: #F3722C;
+  color: #5991FF;
 }
 
 .logout:hover {
-  background-color: #F3722C;
+  background-color: #5991FF;
   border: 1px solid;
   color: white;
 }
@@ -165,7 +165,7 @@ a:hover {
 
 
 .icon-color {
-  color: #F3722C;
+  color: #5991FF;
 }
 
 .dropdown-menu.show {
@@ -211,15 +211,15 @@ a:hover {
 
 .header-inserzionista {
   padding: 5px;
-  border: 1px solid #F3722C;
-  background-color: #F3722C;
+  border: 1px solid #5991FF;
+  background-color: #5991FF;
   color: white;
   border-top-right-radius: 3px;
   border-top-left-radius: 3px;
 }
 
 .body-inserzionista {
-  border: 1px solid #F3722C;
+  border: 1px solid #5991FF;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
   padding: 5px;
@@ -227,10 +227,10 @@ a:hover {
 }
 
 .inserzionista {
-  color: #F3722C;
+  color: #5991FF;
 
   &:hover {
-    color: #F3722C;
+    color: #5991FF;
   }
 }
 
@@ -245,10 +245,10 @@ input::-webkit-inner-spin-button {
 }
 
 .page-link {
-  color: #F3722C;
-  --bs-pagination-active-bg: #F3722C;
-  --bs-pagination-active-border-color:#F3722C;
-  --bs-pagination-hover-color:#F3722C;
+  color: #5991FF;
+  --bs-pagination-active-bg: #5991FF;
+  --bs-pagination-active-border-color:#5991FF;
+  --bs-pagination-hover-color:#5991FF;
   --bs-pagination-disabled-bg:transparent;
 }
 

@@ -26,6 +26,25 @@ class BecomeRevisor extends Mailable
 
     public function build()
     {
-        return $this->from('admin@mercatodo.com')->view('mail.become_revisor');
+        return $this->from('admin@mercatodo.com');
     }
+
+    public function envelope(): Envelope 
+    {
+        return new Envelope(
+            subject: 'Become Revisor',
+        );
+    }
+
+    public function content(): Content
+    {
+        return new Content(
+            view: 'mail.become_revisor',
+        );
+    }
+
+    public function attachment(): array
+    {
+        return [];
+    } 
 }

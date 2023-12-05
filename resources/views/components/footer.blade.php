@@ -53,7 +53,7 @@
                 @endif
            
                 <div class="col-12 text-center text-md-center mb-3 mb-md-0">
-                    &copy; <a class="border-bottom" href="{{ route('homepage') }}">Tap&Go </a> - {{__('ui.reserved')}}
+                    &copy; <a class="border-bottom" href="{{ route('homepage') }}">Mercatodo </a> - {{__('ui.reserved')}}
                 </div>
 
             </div>

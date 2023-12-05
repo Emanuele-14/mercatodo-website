@@ -33,7 +33,8 @@ class RemoveFaces implements ShouldQueue
     public function handle(): void
     {
         $i = Image::find($this->announcement_image_id);
-        if(!$i){
+        if(!$i)
+        {
             return;
         }
         $srcPath= storage_path('app/public/'. $i->path);
